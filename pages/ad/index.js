@@ -133,13 +133,17 @@ Page({
     wx.showLoading({
       title: '',
     })
-    const res = await WXAPI.queryAddress(wx.getStorageSync('token'))
+    // https://www.yuque.com/apifm/nu0f75/mmte1o
+    const res = await WXAPI.queryAddressV2({
+      token: wx.getStorageSync('token'),
+      pageSize: 100
+    })
     wx.hideLoading({
       success: (res) => {},
     })
     if (res.code == 0) {
       this.setData({
-        addressList: res.data
+        addressList: res.data.result
       });
     } else {
       this.setData({

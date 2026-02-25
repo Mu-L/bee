@@ -96,6 +96,7 @@ module.exports =
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc';
 var COMMON_BASE_URL = 'https://common.apifm.com/';
+var CMS_BASE_URL = 'https://cms.apifm.com/';
 var subDomain = '-';
 var merchantId = '0';
 
@@ -673,7 +674,7 @@ module.exports = {
     return request('/shop/goods/priceMultilevels', true, 'get', data);
   },
   goodsRebate: function goodsRebate(token, goodsId) {
-    return request('/shop/goods/rebate/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/rebate/v2', false, 'get', {
       token: token, goodsId: goodsId
     });
   },
@@ -802,13 +803,13 @@ module.exports = {
     });
   },
   addAddress: function addAddress(data) {
-    return request('/user/shipping-address/add', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/add', false, 'post', data);
   },
   updateAddress: function updateAddress(data) {
-    return request('/user/shipping-address/update', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/update', false, 'post', data);
   },
   deleteAddress: function deleteAddress(token, id) {
-    return request('/user/shipping-address/delete', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/delete', false, 'post', {
       id: id,
       token: token
     });
@@ -819,15 +820,15 @@ module.exports = {
     });
   },
   queryAddressV2: function queryAddressV2(data) {
-    return request('/user/shipping-address/list/v2', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/list/v2', false, 'post', data);
   },
   defaultAddress: function defaultAddress(token) {
-    return request('/user/shipping-address/default/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/default/v2', false, 'get', {
       token: token
     });
   },
   addressDetail: function addressDetail(token, id) {
-    return request('/user/shipping-address/detail/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/detail/v2', false, 'get', {
       id: id,
       token: token
     });
@@ -1420,10 +1421,10 @@ module.exports = {
     return request('/cms/news/list/v2', true, 'post', data);
   },
   cmsArticlesV3: function cmsArticlesV3(data) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/list/v2', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/list/v2', true, 'post', data);
   },
   cmsArticleUsefulLogs: function cmsArticleUsefulLogs(data) {
-    return request('/cms/news/useful/logs', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/useful/logs', false, 'post', data);
   },
   cmsArticleDetail: function cmsArticleDetail(id) {
     return request('/cms/news/detail', true, 'get', { id: id });
@@ -1434,34 +1435,34 @@ module.exports = {
     return request('/cms/news/detail/v2', true, 'get', { id: id, token: token });
   },
   cmsArticleDetailV3: function cmsArticleDetailV3(data) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/detail/v2', true, 'get', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/detail/v2', true, 'get', data);
   },
   cmsArticlePreNext: function cmsArticlePreNext(id) {
     return request('/cms/news/preNext', true, 'get', { id: id });
   },
   cmsArticlePreNextV2: function cmsArticlePreNextV2(id) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/preNext', true, 'get', { id: id });
+    return request(CMS_BASE_URL + merchantId + '/cms/news/preNext', true, 'get', { id: id });
   },
   cmsArticleCreate: function cmsArticleCreate(data) {
     return request('/cms/news/put', true, 'post', data);
   },
   cmsArticleCreateV2: function cmsArticleCreateV2(data) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/put', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/put', true, 'post', data);
   },
   cmsArticleDelete: function cmsArticleDelete(token, id) {
     return request('/cms/news/del', true, 'post', { token: token, id: id });
   },
   cmsArticleDeleteV2: function cmsArticleDeleteV2(token, id) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/del', true, 'post', { token: token, id: id });
+    return request(CMS_BASE_URL + merchantId + '/cms/news/del', true, 'post', { token: token, id: id });
   },
   cmsArticleUseless: function cmsArticleUseless(data) {
-    return request('/cms/news/useful', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/useful', false, 'post', data);
   },
   cmsArticleModifyExtNumber: function cmsArticleModifyExtNumber(data) {
     return request('/cms/news/modifyExtNumber', true, 'post', data);
   },
   cmsArticleModifyExtNumberV2: function cmsArticleModifyExtNumberV2(data) {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/modifyExtNumber', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/cms/news/modifyExtNumber', true, 'post', data);
   },
   newsOwnerUserViewStatistics: function newsOwnerUserViewStatistics(data) {
     return request('/newsOwnerUserViewStatistics/list', true, 'post', data);
@@ -1473,7 +1474,7 @@ module.exports = {
     return request('/cms/tags/list', true, 'get', {});
   },
   cmsTagsV2: function cmsTagsV2(data) {
-    return request('https://cms.apifm.com/' + merchantId + '/newsTag/list', true, 'post', data);
+    return request(CMS_BASE_URL + merchantId + '/newsTag/list', true, 'post', data);
   },
   cmsNewsSignUsers: function cmsNewsSignUsers(data) {
     return request('/newsSign/signUsers', true, 'post', data);
@@ -1827,19 +1828,19 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/dynamicUserCode', false, 'get', { token: token });
   },
   userLevelList: function userLevelList(data) {
-    return request('/user/level/list', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/user/level/list', false, 'post', data);
   },
   userLevelDetail: function userLevelDetail(levelId) {
-    return request('/user/level/info', true, 'get', { id: levelId });
+    return request(COMMON_BASE_URL + subDomain + '/user/level/info', false, 'get', { id: levelId });
   },
   userLevelPrices: function userLevelPrices(levelId) {
-    return request('/user/level/prices', true, 'get', { levelId: levelId });
+    return request(COMMON_BASE_URL + subDomain + '/user/level/prices', false, 'get', { levelId: levelId });
   },
   userLevelBuy: function userLevelBuy(token, priceId) {
     var isAutoRenew = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     var remark = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-    return request('/user/level/buy', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/level/buy', false, 'post', {
       token: token,
       userLevelPriceId: priceId,
       isAutoRenew: isAutoRenew,
@@ -1847,7 +1848,7 @@ module.exports = {
     });
   },
   userLevelBuyLogs: function userLevelBuyLogs(data) {
-    return request('/user/level/buyLogs', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/user/level/buyLogs', false, 'post', data);
   },
   messageList: function messageList(data) {
     return request('/user/message/list', true, 'post', data);
@@ -2898,76 +2899,79 @@ module.exports = {
   },
   // 企业应用 组织/成员/网盘
   organizePrices: function organizePrices() {
-    return request('/organizeInfo/prices', true, 'get');
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/prices', true, 'get');
   },
   organizeCreate: function organizeCreate(data) {
-    return request('/organizeInfo/create', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/create', true, 'post', data);
   },
   organizeUpgrade: function organizeUpgrade(data) {
-    return request('/organizeInfo/upgrade', true, 'post', data);
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/upgrade', true, 'post', data);
   },
   organizeModify: function organizeModify(data) {
-    return request('/organizeInfo/modify', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/modify', true, 'post', data);
   },
   organizeJoinKey: function organizeJoinKey(data) {
-    return request('/organizeInfo/joinKey', true, 'get', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/joinKey', true, 'get', data);
   },
   organizeJoin: function organizeJoin(data) {
-    return request('/organizeInfo/join', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/join', true, 'post', data);
   },
   organizeGrantAdmin: function organizeGrantAdmin(data) {
-    return request('/organizeInfo/grantAdmin', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/grantAdmin', true, 'post', data);
   },
   organizeKick: function organizeKick(data) {
-    return request('/organizeInfo/kick', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kick', true, 'post', data);
   },
   organizeKickAllMembers: function organizeKickAllMembers(data) {
-    return request('/organizeInfo/kickAllMembers', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kickAllMembers', true, 'post', data);
   },
   organizeKickSelf: function organizeKickSelf(data) {
-    return request('/organizeInfo/kickSelf', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kickSelf', true, 'post', data);
   },
   organizeNick: function organizeNick(data) {
-    return request('/organizeInfo/nick', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/nick', true, 'post', data);
   },
   organizeDelete: function organizeDelete(data) {
-    return request('/organizeInfo/deleteOrganize', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/deleteOrganize', true, 'post', data);
   },
   organizeMyOrganizeInfo: function organizeMyOrganizeInfo(data) {
-    return request('/organizeInfo/myOrganizeInfo', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/myOrganizeInfo', true, 'post', data);
   },
   organizeDetail: function organizeDetail(data) {
-    return request('/organizeInfo/organizeDetail', true, 'get', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/organizeDetail', true, 'get', data);
   },
   organizeMembers: function organizeMembers(data) {
-    return request('/organizeInfo/members', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/members', true, 'post', data);
   },
   organizeNoticeList: function organizeNoticeList(data) {
-    return request('/organizeNotice/list', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/list', true, 'post', data);
   },
   organizeNoticeDetail: function organizeNoticeDetail(data) {
-    return request('/organizeNotice/detail', true, 'get', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/detail', true, 'get', data);
   },
   organizeNoticeSave: function organizeNoticeSave(data) {
-    return request('/organizeNotice/save', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/save', true, 'post', data);
   },
   organizeNoticeDelete: function organizeNoticeDelete(data) {
-    return request('/organizeNotice/del', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/del', true, 'post', data);
   },
-  organizePanUpload: function organizePanUpload(data) {
-    return request('/organizePan/upload', true, 'post', data);
+  organizePanUploadGetSignature: function organizePanUploadGetSignature(data) {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/uploadGetSignature', true, 'post', data);
   },
-  organizePanDownload: function organizePanDownload(data) {
-    return request('/organizePan/download', true, 'get', data);
+  organizePanUploadV2: function organizePanUploadV2(data) {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/upload', true, 'post', data);
+  },
+  organizePanDownloadV2: function organizePanDownloadV2(data) {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/download', true, 'get', data);
   },
   organizePanFiles: function organizePanFiles(data) {
-    return request('/organizePan/files', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizePan/files', true, 'post', data);
   },
   organizePanModify: function organizePanModify(data) {
-    return request('/organizePan/modify', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizePan/modify', true, 'post', data);
   },
   organizePanDelete: function organizePanDelete(data) {
-    return request('/organizePan/del', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/organizePan/del', true, 'post', data);
   },
   newsExtFieldList: function newsExtFieldList(token, organizeId, newsId) {
     return request('/newsExtField/extFields', true, 'get', { token: token, organizeId: organizeId, newsId: newsId });
@@ -2979,16 +2983,16 @@ module.exports = {
     return request('/newsExtField/setField', true, 'post', data);
   },
   newsExtFieldInit: function newsExtFieldInit(data) {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/initFields', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/initFields', true, 'post', data);
   },
   newsExtFieldListV2: function newsExtFieldListV2(data) {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/extFields', true, 'get', data);
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/extFields', true, 'get', data);
   },
   newsExtFieldDynamicV2: function newsExtFieldDynamicV2(data) {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/dynamic', true, 'get', data);
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/dynamic', true, 'get', data);
   },
   newsExtFieldSetV2: function newsExtFieldSetV2(data) {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/setField', true, 'post', data);
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/setField', true, 'post', data);
   },
   userAttendantList: function userAttendantList(data) {
     return request('/user/attendant/list', true, 'post', data);
