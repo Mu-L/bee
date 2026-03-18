@@ -15,7 +15,7 @@
       <view class="user-info">
         <view class="user-nick">{{ nick ? nick : $t.my.nickSet }}</view>
         <view class="user-member">
-          <van-tag type="warning" round size="medium">{{ $t.home.huiyuan }}</van-tag>
+          <van-tag type="warning" round size="medium">{{ apiUserInfoMap.userLevel.name || $t.home.huiyuan }}</van-tag>
         </view>
       </view>
     </view>

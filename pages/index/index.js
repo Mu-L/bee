@@ -664,8 +664,18 @@ Page({
       ele.selected = false
     })
     curGoodsMap.properties[index1].childsCurGoods[index2].selected = true
+    let skuGoodsPic = this.data.skuGoodsPic
+    if (curGoodsMap.subPics && curGoodsMap.subPics.length > 0) {
+      const _subPic = curGoodsMap.subPics.find(ele => {
+        return ele.optionValueId == curGoodsMap.properties[index1].childsCurGoods[index2].id
+      })
+      if (_subPic) {
+        skuGoodsPic = _subPic.pic
+      }
+    }
     this.setData({
-      curGoodsMap
+      curGoodsMap,
+      skuGoodsPic
     })
     this.calculateGoodsPrice()
   },
@@ -962,6 +972,7 @@ Page({
     res.data.number = res.data.basicInfo.minBuyNumber
     const _data = {
       curGoodsMap: res.data,
+      skuGoodsPic: res.data.basicInfo.pic,
       pingtuan_open_id: null,
       lijipingtuanbuy: false
     }
