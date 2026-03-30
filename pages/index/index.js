@@ -230,6 +230,7 @@ Page({
       return
     }
     // 检测是否需要弹出优惠券的福袋
+    // https://www.yuque.com/apifm/nu0f75/xmxf7y
     const res = await WXAPI.coupons({
       token: wx.getStorageSync('token')
     })

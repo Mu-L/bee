@@ -66,7 +66,9 @@
 https://mp.weixin.qq.com/
 根据自己的实际情况选择 “企业”、“个体工商户”身份，注册小程序账号，商城类小程序不支持个人用户上线，所以一定要选择企业或者个体户，获得你自己小程序的 appid 和 secret 信息，保存好，下面会用到：
 - [如何查看小程序的AppID和AppSecret](https://jingyan.baidu.com/article/642c9d340305e3644a46f795.html)
-你需要设置小程序的合法域名，否则开发工具上运行正常，手机访问的时候将看不到数据
+
+    你需要设置小程序的合法域名，否则开发工具上运行正常，手机访问的时候将看不到数据
+
 - [设置合法服务器域名](https://www.yuque.com/apifm/doc/tvpou9)
 ## 注册开通后台账号
 https://admin.s2m.cc/
